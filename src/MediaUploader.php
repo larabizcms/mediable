@@ -13,7 +13,6 @@ use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-use LarabizCMS\Core\Models\User;
 use LarabizCMS\Mediable\Exceptions\MediaException;
 use LarabizCMS\Mediable\Media as MediaContract;
 use LarabizCMS\Mediable\Models\Media;
@@ -66,9 +65,9 @@ class MediaUploader
     /**
      * User who uploaded the file.
      *
-     * @var User|int|null
+     * @var Authenticatable|int|null
      */
-    protected null|User|int $user = null;
+    protected null|Authenticatable|int $user = null;
 
     protected bool $uploaded = false;
 
@@ -138,10 +137,10 @@ class MediaUploader
     /**
      * Sets the user who uploaded the object and returns the current instance.
      *
-     * @param User|int $user The user to set.
+     * @param Authenticatable|int $user The user to set.
      * @return static The current instance.
      */
-    public function user(int|User $user): static
+    public function user(int|Authenticatable $user): static
     {
         $this->user = $user;
 
