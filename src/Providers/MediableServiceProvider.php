@@ -2,6 +2,7 @@
 
 namespace LarabizCMS\Mediable\Providers;
 
+use Illuminate\Support\ServiceProvider;
 use Intervention\Image\Image;
 use LarabizCMS\Mediable\ImageConversion;
 use LarabizCMS\Mediable\ImageConversionRepository;
@@ -9,7 +10,7 @@ use LarabizCMS\Mediable\MediaRepository;
 use LarabizCMS\Mediable\Models\Media;
 use LarabizCMS\Mediable\Observes\MediaObserve;
 
-class MediableServiceProvider extends \Illuminate\Support\ServiceProvider
+class MediableServiceProvider extends ServiceProvider
 {
     public function register(): void
     {

@@ -6,10 +6,13 @@ use Eloquent;
 use Illuminate\Contracts\Filesystem\Filesystem;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Filesystem\FilesystemAdapter;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Storage;
 use LarabizCMS\Mediable\Media as MediaContract;
 
@@ -66,6 +69,8 @@ class Media extends Model
 
     protected Filesystem $filesystem;
 
+    protected $table = 'media';
+
     protected $fillable = [
         'user_id',
         'name',
@@ -97,12 +102,12 @@ class Media extends Model
         return $this->morphTo(__FUNCTION__, 'uploaded_by_type', 'uploaded_by_id');
     }
 
-    public function parent(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function parent(): BelongsTo
     {
         return $this->belongsTo(static::class, 'parent_id', 'id');
     }
 
-    public function children(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function children(): HasMany
     {
         return $this->hasMany(static::class, 'parent_id', 'id');
     }
@@ -202,9 +207,9 @@ class Media extends Model
     /**
      * Get the collection of conversions.
      *
-     * @return \Illuminate\Support\Collection
+     * @return Collection
      */
-    public function collectConversion(): \Illuminate\Support\Collection
+    public function collectConversion(): Collection
     {
         return collect($this->conversions ?? []);
     }
