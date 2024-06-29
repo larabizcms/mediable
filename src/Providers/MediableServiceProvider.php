@@ -9,7 +9,7 @@ use LarabizCMS\Mediable\MediaRepository;
 use LarabizCMS\Mediable\Models\Media;
 use LarabizCMS\Mediable\Observes\MediaObserve;
 
-class ServiceProvider extends \Illuminate\Support\ServiceProvider
+class MediableServiceProvider extends \Illuminate\Support\ServiceProvider
 {
     public function register(): void
     {
