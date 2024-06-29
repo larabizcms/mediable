@@ -17,11 +17,22 @@ use LarabizCMS\Mediable\Models\Media as MediaModel;
 
 class MediaRepository implements Media
 {
+    /**
+     * Uploads a file to the storage.
+     *
+     * @param  string|UploadedFile|null  $source  The source of the file to upload. It can be a string
+     *                                            representing the path to the file or an instance of
+     *                                            UploadedFile. Defaults to null.
+     * @param  string  $disk  The name of the disk to upload to. Defaults to 'public'.
+     * @param  string|null  $name  The name of the file. Defaults to null.
+     * @return MediaUploader  The instance of MediaUploader used to upload the file.
+     */
     public function upload(
         string|UploadedFile $source = null,
         string $disk = 'public',
         string $name = null
     ): MediaUploader {
+        // Create a new instance of MediaUploader and return it.
         return new MediaUploader($source, $disk, $name);
     }
 
@@ -123,7 +134,7 @@ class MediaRepository implements Media
             $mimeType = File::mimeType($file);
         }
 
-        return in_array($mimeType, config('filesystems.image_mime_types'));
+        return in_array($mimeType, config('filesystems.image_mime_types', []));
     }
 
     public function convert(MediaModel $media, string $conversion, string $toPath): Image

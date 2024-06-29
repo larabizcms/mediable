@@ -4,7 +4,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use OneContent\Mediable\Models\Media;
+use LarabizCMS\Mediable\Models\Media;
 
 return new class extends Migration
 {

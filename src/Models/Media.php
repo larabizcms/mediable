@@ -90,7 +90,7 @@ class Media extends Model
         'metadata' => 'array',
     ];
 
-    protected $appends = ['url', 'is_directory', 'readable_size'];
+    protected $appends = ['url', 'is_directory', 'readable_size', 'is_image'];
 
     public function findByPath(string $path, string $disk = 'public', array $columns = ['*']): ?Model
     {
@@ -135,6 +135,11 @@ class Media extends Model
     public function isDirectory(): bool
     {
         return $this->type === static::TYPE_DIR;
+    }
+
+    public function getIsImageAttribute(): bool
+    {
+        return $this->isImage();
     }
 
     public function isImage(): bool
