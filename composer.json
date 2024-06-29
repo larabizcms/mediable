@@ -1,0 +1,34 @@
+{
+    "name": "larabizcms/mediable",
+    "description": "Media Management for Laravel",
+    "keywords": [
+        "PHP",
+        "Laravel",
+        "CMS",
+        "File Management",
+        "Media Management",
+        "Media",
+        "File"
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "intervention/image": "^2.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "LarabizCMS\\Mediable\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "LarabizCMS\\Mediable\\Providers\\ServiceProvider"
+            ]
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "LarabizCMS\\Mediable\\Tests\\": "tests/"
+        }
+    }
+}
