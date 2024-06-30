@@ -90,7 +90,13 @@ class Media extends Model
         'metadata' => 'array',
     ];
 
-    protected $appends = ['url', 'is_directory', 'readable_size', 'is_image'];
+    protected $appends = [
+        'url',
+        'is_directory',
+        'readable_size',
+        'is_image',
+        'is_video',
+    ];
 
     public function findByPath(string $path, string $disk = 'public', array $columns = ['*']): ?Model
     {
@@ -132,6 +138,11 @@ class Media extends Model
         return $this->readableSize();
     }
 
+    public function getIsVideoAttribute(): bool
+    {
+        return $this->isVideo();
+    }
+
     public function isDirectory(): bool
     {
         return $this->type === static::TYPE_DIR;
@@ -145,6 +156,14 @@ class Media extends Model
     public function isImage(): bool
     {
         return in_array($this->mime_type, config('filesystems.image_mime_types'));
+    }
+
+    public function isVideo(): bool
+    {
+        return in_array($this->mime_type, [
+            'video/mp4',
+            'video/apk',
+        ]);
     }
 
     public function readableSize(int $precision = 1): string
