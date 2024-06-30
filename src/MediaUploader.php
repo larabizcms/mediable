@@ -166,7 +166,7 @@ class MediaUploader
      * @param int $folder The folder id to set.
      * @return static The current instance.
      */
-    public function folder(int $folder): static
+    public function folder(?int $folder): static
     {
         $this->parentId = $folder;
 

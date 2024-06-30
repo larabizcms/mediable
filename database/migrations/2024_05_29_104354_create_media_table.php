@@ -23,9 +23,9 @@ return new class extends Migration
                 $table->nullableMorphs('uploaded_by');
                 $table->string('name');
                 $table->string('type', 5)->index()->default(Media::TYPE_FILE);
-                $table->string('path', 190);
-                $table->string('mime_type', 30)->nullable();
-                $table->string('extension', 10)->nullable();
+                $table->string('path', 190)->nullable();
+                $table->string('mime_type', 100)->index()->nullable();
+                $table->string('extension', 10)->index()->nullable();
                 $table->string('image_size', 20)->nullable();
                 $table->bigInteger('size')->default(0);
                 $table->json('conversions')->nullable();

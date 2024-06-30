@@ -76,7 +76,7 @@ class Media extends Model
         'name',
         'conversions',
         'path',
-        'folder_id',
+        'parent_id',
         'mime_type',
         'size',
         'type',
