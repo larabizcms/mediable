@@ -51,4 +51,8 @@ interface Media
     public function convert(MediaModel $media, string $conversion, string $toPath): Image;
 
     public function validateUploadedFile(UploadedFile $file, string|Filesystem|FilesystemAdapter $filesystem): void;
+
+    public function setModel(string $model): void;
+
+    public function getModel(): string;
 }

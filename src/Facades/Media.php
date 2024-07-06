@@ -15,6 +15,8 @@ use LarabizCMS\Mediable\Models\Media as MediaModel;
  * @method static string pathToUploadedFile(string $path, bool $test = false)
  * @method static Image convert(MediaModel $media, string $conversion, string $toPath)
  * @method static string getImageSize(string $path)
+ * @method static void setModel()
+ * @method static string getModel()
  * @see \LarabizCMS\Mediable\Media
  */
 class Media extends Facade

@@ -3,10 +3,10 @@
 namespace LarabizCMS\Mediable\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use LarabizCMS\Mediable\Facades\Media;
 use LarabizCMS\Mediable\ImageConversion;
 use LarabizCMS\Mediable\ImageConversionRepository;
 use LarabizCMS\Mediable\MediaRepository;
-use LarabizCMS\Mediable\Models\Media;
 use LarabizCMS\Mediable\Observes\MediaObserve;
 
 class MediableServiceProvider extends ServiceProvider
@@ -21,6 +21,6 @@ class MediableServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
-        Media::observe(MediaObserve::class);
+        Media::getModel()::observe(MediaObserve::class);
     }
 }

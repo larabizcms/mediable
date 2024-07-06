@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
-use Illuminate\Support\Str;
 use LarabizCMS\Mediable\Jobs\PerformConversions;
 use LarabizCMS\Mediable\Models\Media;
+use LarabizCMS\Mediable\Facades\Media as MediaFacade;
 
 /**
  * @property array $mediaChannels
@@ -42,7 +42,7 @@ trait HasMedia
     public function media(): MorphToMany
     {
         return $this->morphToMany(
-            Media::class,
+            MediaFacade::getModel(),
             'mediable',
             'mediable',
             'mediable_id',
@@ -265,7 +265,7 @@ trait HasMedia
      * @param mixed $model The model object to process the media attributes for.
      * @return void
      */
-    protected function processMediaAttributes()
+    protected function processMediaAttributes(): void
     {
         if ($this->mediaAttributes) {
             foreach ($this->mediaAttributes as $channel => $media) {

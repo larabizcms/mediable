@@ -17,6 +17,8 @@ use LarabizCMS\Mediable\Models\Media as MediaModel;
 
 class MediaRepository implements Media
 {
+    protected string $model = \LarabizCMS\Mediable\Models\Media::class;
+
     /**
      * Uploads a file to the storage.
      *
@@ -183,5 +185,15 @@ class MediaRepository implements Media
                 throw MediaException::maxFileSizeExceeded($maxSize);
             }
         }
+    }
+
+    public function setModel(string $model): void
+    {
+        $this->model = $model;
+    }
+
+    public function getModel(): string
+    {
+        return $this->model;
     }
 }
