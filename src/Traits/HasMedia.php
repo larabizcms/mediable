@@ -58,12 +58,13 @@ trait HasMedia
             $channel = [$channel];
         }
 
+        if ($channel === null) {
+            return $builder->with(['media']);
+        }
+
         return $builder->with(
             [
-                'media' => fn($query) => $query->when(
-                    $channel,
-                    fn($query) => $query->wherePivotIn('channel', $channel)
-                )
+                'media' => fn($query) => $query->wherePivotIn('channel', $channel)
             ]
         );
     }
@@ -108,10 +109,14 @@ trait HasMedia
      * @return static The current instance with the media attached or updated.
      * @throws \Throwable
      */
-    public function attachOrUpdateMedia(Media|int|string $media, string $channel = 'default'): static
+    public function attachOrUpdateMedia(Media|int|string|null $media, string $channel = 'default'): static
     {
         if ($old = $this->getFirstMedia($channel)) {
             $this->detachMedia($old);
+        }
+
+        if (! $media) {
+            return $this;
         }
 
         return $this->attachMedia($media, $channel);
