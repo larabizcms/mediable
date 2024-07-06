@@ -295,11 +295,4 @@ class Media extends Model
     {
         return $this->filesystem ??= Storage::disk($this->disk);
     }
-
-    public function forceDelete(): ?bool
-    {
-        $this->filesystem()->delete($this->path);
-
-        return parent::forceDelete();
-    }
 }
