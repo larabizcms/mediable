@@ -3,7 +3,6 @@
 namespace LarabizCMS\Mediable\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Intervention\Image\Image;
 use LarabizCMS\Mediable\ImageConversion;
 use LarabizCMS\Mediable\ImageConversionRepository;
 use LarabizCMS\Mediable\MediaRepository;
@@ -20,17 +19,8 @@ class MediableServiceProvider extends ServiceProvider
         $this->app->singleton(\LarabizCMS\Mediable\Media::class, MediaRepository::class);
     }
 
-    public function boot()
+    public function boot(): void
     {
         Media::observe(MediaObserve::class);
-
-        $this->app[ImageConversion::class]->register(
-            'thumb',
-            function (Image $image) {
-                // you have access to intervention/image library,
-                // perform your desired conversions here
-                return $image->fit(64, 64);
-            }
-        );
     }
 }

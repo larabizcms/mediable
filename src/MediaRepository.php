@@ -134,7 +134,7 @@ class MediaRepository implements Media
             $mimeType = File::mimeType($file);
         }
 
-        return in_array($mimeType, config('filesystems.image_mime_types', []));
+        return in_array($mimeType, config('filesystems.image_mime_types', MediaModel::IMAGE_MIME_TYPES));
     }
 
     public function convert(MediaModel $media, string $conversion, string $toPath): Image

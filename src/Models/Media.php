@@ -67,6 +67,21 @@ class Media extends Model
     public const TYPE_FILE = 'file';
     public const TYPE_DIR = 'dir';
 
+    public const IMAGE_MIME_TYPES = [
+        'image/png',
+        'image/jpeg',
+        'image/jpg',
+        'image/gif',
+        'image/svg+xml',
+        'image/svg',
+    ];
+
+    public const VIDEO_MIME_TYPES = [
+        'video/mp4',
+        'video/ogg',
+        'video/webm',
+    ];
+
     protected Filesystem $filesystem;
 
     protected $table = 'media';
@@ -155,15 +170,12 @@ class Media extends Model
 
     public function isImage(): bool
     {
-        return in_array($this->mime_type, config('filesystems.image_mime_types'));
+        return in_array($this->mime_type, config('filesystems.image_mime_types', self::IMAGE_MIME_TYPES));
     }
 
     public function isVideo(): bool
     {
-        return in_array($this->mime_type, [
-            'video/mp4',
-            'video/apk',
-        ]);
+        return in_array($this->mime_type, self::VIDEO_MIME_TYPES);
     }
 
     public function readableSize(int $precision = 1): string
