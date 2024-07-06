@@ -13,7 +13,8 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "intervention/image": "^2.5"
+        "intervention/image": "^2.5",
+        "spatie/image-optimizer": "^1.4"
     },
     "autoload": {
         "psr-4": {
