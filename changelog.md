@@ -1,3 +1,8 @@
+### v1.0.2 
+* feat: Remove custom forceDelete logic from Media model
+* feat: Define media type constants for consistency
+* Subject: Enhance image processing capabilities
+
 ### v1.0.1 
 * Fix: Allow detaching media by passing null to attachOrUpdateMedia
 * feat: Add `is_video` attribute to Media model
