@@ -82,6 +82,16 @@ class Media extends Model
         'video/webm',
     ];
 
+    public const AUDIO_MIME_TYPES = [
+        'audio/mp3',
+        'audio/mpeg',
+    ];
+
+    public const DOCUMENT_MIME_TYPES = [
+        'application/pdf',
+        'text/plain',
+    ];
+
     protected Filesystem $filesystem;
 
     protected $table = 'media';
@@ -176,6 +186,16 @@ class Media extends Model
     public function isVideo(): bool
     {
         return in_array($this->mime_type, self::VIDEO_MIME_TYPES);
+    }
+
+    public function isAudio(): bool
+    {
+        return in_array($this->mime_type, self::AUDIO_MIME_TYPES);
+    }
+
+    public function isDocument(): bool
+    {
+        return in_array($this->mime_type, self::DOCUMENT_MIME_TYPES);
     }
 
     public function readableSize(int $precision = 1): string
