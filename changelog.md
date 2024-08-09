@@ -1,3 +1,7 @@
+### v1.0.3 
+* feat(Media): Add file management capabilities
+* feat: Introduce MIME type checks for audio and document media
+
 ### v1.0.2 
 * feat: Remove custom forceDelete logic from Media model
 * feat: Define media type constants for consistency
