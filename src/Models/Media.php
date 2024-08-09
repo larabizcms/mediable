@@ -58,6 +58,20 @@ use LarabizCMS\Mediable\Media as MediaContract;
  * @method static Builder|Media withTrashed()
  * @method static Builder|Media withoutTrashed()
  * @method static Builder|Media findByPath(string $path, string $disk = 'public', array $columns = ['*'])
+ * @property string|null $uploaded_by_type
+ * @property int|null $uploaded_by_id
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, Media> $children
+ * @property-read int|null $children_count
+ * @property-read bool $is_directory
+ * @property-read bool $is_image
+ * @property-read bool $is_video
+ * @property-read string $readable_size
+ * @property-read string|null $url
+ * @property-read Media|null $parent
+ * @property-read Model|\Eloquent $uploadable
+ * @method static Builder|Media whereImageSize($value)
+ * @method static Builder|Media whereUploadedById($value)
+ * @method static Builder|Media whereUploadedByType($value)
  * @mixin Eloquent
  */
 class Media extends Model
