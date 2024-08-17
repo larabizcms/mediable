@@ -157,6 +157,11 @@ class Media extends Model
         return $this->hasMany(static::class, 'parent_id', 'id');
     }
 
+    public function parents(): BelongsTo
+    {
+        return $this->parent()->with('parents');
+    }
+
     /**
      * Get the original media url.
      *
