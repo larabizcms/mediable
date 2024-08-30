@@ -1,3 +1,6 @@
+### v1.0.4 
+* feat: Add recursive relationship for Media parents
+
 ### v1.0.3 
 * feat(Media): Add file management capabilities
 * feat: Introduce MIME type checks for audio and document media
