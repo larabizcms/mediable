@@ -21,7 +21,7 @@ use LarabizCMS\Mediable\Media as MediaContract;
  *
  * @property int $id
  * @property string $disk
- * @property int|null $user_id
+ * @property string|null $user_id
  * @property string $name
  * @property string $type
  * @property string $path
