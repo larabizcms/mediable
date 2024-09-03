@@ -1,3 +1,6 @@
+### v1.0.5 
+* Fix: Allow string user IDs for media
+
 ### v1.0.4 
 * feat: Add recursive relationship for Media parents
 
