@@ -13,7 +13,7 @@ use LarabizCMS\Mediable\Facades\Media as MediaFacade;
 /**
  * @property array $mediaChannels
  * @property Collection $media
- * @method static Builder withMedia(string|array|null $channel = null)
+ * @method static Builder|static withMedia(string|array|null $channel = null)
  */
 trait HasMedia
 {

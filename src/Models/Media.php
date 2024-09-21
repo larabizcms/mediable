@@ -72,6 +72,7 @@ use LarabizCMS\Mediable\Media as MediaContract;
  * @method static Builder|Media whereImageSize($value)
  * @method static Builder|Media whereUploadedById($value)
  * @method static Builder|Media whereUploadedByType($value)
+ * @property-read Media|null $parents
  * @mixin Eloquent
  */
 class Media extends Model
